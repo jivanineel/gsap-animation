@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="flip-animation">
+        <div class="container d-flex justify-content-center align-items-start h-100">
+            <div class="flip-1 flip">flip-1</div>
+        </div>
+
+    </div>
+
+    <!-- <div class="split-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam sunt a minus error repellendus aliquid
+        itaque pariatur quibusdam deserunt. Odit, accusantium? Corporis, quia consequuntur.</div> -->
+
+    
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/gsap-js.js"></script>
+    <!-- <script src="assets/js/flip.js"></script> -->
+    <script src="assets/js/scroll-smother.js"></script>
+    <script src="assets/js/scroll-trigger.js"></script>
+    <script src="assets/js/split-text.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            gsap.config({ trialWarn: false });
+            gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText);
+
+            // let smoother = ScrollSmoother.create({
+            //     element: document.documentElement,
+            //     smooth: 1,
+            //     effects: true,
+            //     pin: true,
+            // });
+
+            let scrolAnimation = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".flip-animation .container",
+                    start: "top 70",
+                    end: "bottom bottom",
+                    scrub: 1,
+                    pin: true,
+                    // markers: true,
+                },
+            });
+
+            scrolAnimation.to(".flip-1",
+                {
+                    x: 350,
+                    y: 300,
+                    rotateY: 360,
+                    duration: 4,
+                })
+                .to(".flip-1", {
+                    x: 0,
+                    y: 600,
+                    rotateY: 0,
+                    duration: 4,
+                    scale: 2.5,
+                });
+
+        })
+    </script>
+
+
+</body>
+
+</html>
